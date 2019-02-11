@@ -50,15 +50,15 @@
 
                 _doValidation() {
                     if (this.regExp.test(this.name)){
-                        this.field.style.outline = "none";
+                        this.field.classList.add('valid-input');
                         this.errorField.innerHTML = "";
                     } else if (this.name === "") {
                         e.preventDefault();
-                        this.field.style.outline = "2px solid red";
+                        this.field.classList.add('not-valid-input');
                         this.errorField.innerHTML = "Поле не может быть пустым";
                     } else {
                         e.preventDefault();
-                        this.field.style.outline = "2px solid red";
+                        this.field.classList.add('not-valid-input');
                         this.errorField.innerHTML = this.errorText;
                     }
                 }

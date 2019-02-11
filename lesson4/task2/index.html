@@ -1,0 +1,100 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <title>Form Validation</title>
+</head>
+<body>
+<form action="#" method="post" id="myForm">
+    <fieldset>
+        <legend>Форма обратной связи</legend>
+        <label>
+            Имя
+            <input type="text" id="name" name="name">
+            <span id="name-error"></span>
+        </label>
+        <label>
+            Номер телефона
+            <input type="text" id="phone" name="phone">
+            <span id="phone-error"></span>
+        </label>
+        <label>
+            E-mail
+            <input type="text" id="mail" name="mail">
+            <span id="mail-error"></span>
+        </label>
+        <label>
+            Город обращения
+            <select name="city" id="city"></select>
+        </label>
+        <label>
+            Сообщение
+            <textarea rows="6"></textarea>
+        </label>
+    </fieldset>
+    <button id="btn-send" type="submit">Отправить</button>
+</form>
+<script src="../jquery.js"></script>
+<script>
+    window.onload = () => {
+        document.getElementById('myForm').addEventListener('submit', e => {
+            let nameInput = new ValidatingInput('name', /^[a-zа-яё]+$/i, 'name-error', "Имя может содержать только буквы");
+            let phoneNumInput = new ValidatingInput('phone', /^\+7\([\d]{3}\)[\d]{3}-[\d]{4}$/i, 'phone-error', "Номер не соответствует шаблону: [&nbsp;+7(000)000-0000&nbsp;]");
+            let mailInput = new ValidatingInput('mail', /^\w{2,}[.-]?\w{2,}@mail.ru$/, 'mail-error', "Некорректный формат email");
+
+            if (!(nameInput.validateInput() && phoneNumInput.validateInput() && mailInput.validateInput())) {
+                e.preventDefault();
+            } else {
+                alert('Обращение отправлено');
+            }
+        });
+
+        class ValidatingInput {
+            constructor(name, regExp, errorField, errorText) {
+                this.name = document.getElementById(name).value;
+                this.field = document.getElementById(name);
+                this.regExp = regExp;
+                this.errorField = document.getElementById(errorField);
+                this.errorText = errorText;
+                this._showError();
+            }
+
+            validateInput() {
+                if (this.regExp.test(this.name)) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+
+            _showError() {
+                if (this.regExp.test(this.name)) {
+                    this.field.classList.add('valid-input');
+                    this.field.classList.remove('not-valid-input');
+                    this.errorField.innerHTML = "";
+                } else if (this.name === "") {
+                    this.field.classList.add('not-valid-input');
+                    this.errorField.innerHTML = "Поле не может быть пустым";
+                } else {
+                    this.field.classList.add('not-valid-input');
+                    this.errorField.innerHTML = this.errorText;
+                }
+            }
+        }
+
+        $.get('cities.json', data => {
+            data.cities.map(city => {
+                let cityOption = document.createElement('option');
+                cityOption.value = city;
+                cityOption.innerHTML = city;
+                $('#city').append(cityOption);
+            });
+        });
+    }
+</script>
+</body>
+</html>
