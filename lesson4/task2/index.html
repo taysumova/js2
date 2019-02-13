@@ -87,7 +87,7 @@
         }
 
         $.get('cities.json', data => {
-            data.cities.map(city => {
+            data.cities.forEach(city => {
                 let cityOption = document.createElement('option');
                 cityOption.value = city;
                 cityOption.innerHTML = city;
