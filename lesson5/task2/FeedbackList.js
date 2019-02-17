@@ -50,10 +50,10 @@ class FeedbackList {
         $container.append($(`<p class="feedback-text">${feedback.text}</p>`));
         $container.append($delBtn);
         $container.appendTo($('.feedback-list-wrap'));
-        $($delBtn).click(e => this._remove(e.target.id));
+        $delBtn.click(e => this._remove(e.target.id));
         if(!feedback.isApproved) {
             $container.append($approveBtn);
-            $($approveBtn).click(e => this._approveFeedback(e.target.id));
+            $approveBtn.click(e => this._approveFeedback(e.target.id));
         } else {
             $container.addClass('approved-feedback');
         }

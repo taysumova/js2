@@ -55,7 +55,7 @@ class Cart {
         $container.append($(`<p class="product-price">${product.price} руб.</p>`));
         $container.append($delBtn);
         $container.appendTo($('.cart-items-wrap'));
-        $($delBtn).click((e) => this._remove(e.target.id));
+        $delBtn.click((e) => this._remove(e.target.id));
     }
     _renderSum(){
         $('.sum-count').text(`Всего товаров в корзине: ${this.countGoods}`);
