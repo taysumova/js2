@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cart</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app">
+    <div id="cart">
+        <h4>Корзина</h4>
+        <div class="cart-items-wrap">
+            <div v-for="item in cartItems" class="cart-item" :key="item.id_product">
+                <p>{{item.product_name}}</p>
+                <p>{{item.price}}</p>
+                <p>{{item.quantity}}</p>
+                <button
+                        v-bind:id="item.id_product"
+                        class="del-btn"
+                        v-bind:data-id="item.id_product"
+                        v-on:click="removeProduct($event)">X</button>
+            </div>
+        </div>
+        <p class="cart-summary sum-count">Всего товаров в корзине: {{countGoods}}</p>
+        <p class="cart-summary sum-price">Всего к оплате: {{amount}} руб.</p>
+    </div>
+    <hr>
+    <div id="products">
+        <div class="product" v-for="product in products" :key="product.id_product">
+            <img v-bind:src="product.image" v-bind:alt="product.alt"/>
+            <div class="desc">
+                <p>{{product.product_name}}</p>
+                <p>Цена: <span class="product-price">{{product.price}}</span></p>
+                <button class="buy-btn"
+                        v-bind:data-id="product.id_product"
+                        v-bind:data-title="product.product_name"
+                        v-bind:data-price="product.price"
+                        v-on:click="addProduct($event)">Купить</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="../jquery.js"></script>
+    <script src="Cart.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
