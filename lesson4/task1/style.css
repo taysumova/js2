@@ -1,0 +1,17 @@
+figure:first-of-type {
+    display: block;
+}
+
+button {
+    background-color: darkgreen;
+    border: 2px solid green;
+    border-radius: 7px;
+    color: white;
+    cursor: pointer;
+    outline: none;
+}
+
+figure {
+    display: none;
+    margin: 10px 0;
+}

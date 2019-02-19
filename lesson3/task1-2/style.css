@@ -1,0 +1,35 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+textarea {
+    border: 3px dashed darkgreen;
+    border-radius: 7px;
+    resize: none;
+    padding: 10px;
+    width: 50%;
+    height: 260px;
+    margin-bottom: 10px;
+}
+
+button {
+    display: block;
+    width: 30%;
+    text-align: center;
+    background-color: darkgreen;
+    border: 2px solid white;
+    border-radius: 7px;
+    color: white;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+button:hover {
+    background-color: white;
+    border: 2px solid darkgreen;
+    color: darkgreen;
+}

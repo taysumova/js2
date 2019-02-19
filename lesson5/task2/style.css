@@ -1,0 +1,111 @@
+body {
+    display: flex;
+}
+
+h2 {
+    margin: 0;
+    text-align: center;
+}
+
+#feedback-list {
+    width: 60%;
+}
+
+.feedback-list-wrap {
+    display: flex;
+    flex-direction: column;
+}
+
+.feedback {
+    padding: 10px;
+    margin: 15px;
+    border-bottom: 1px solid darkslategray;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 40%;
+}
+
+fieldset {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+    margin: 0 auto;
+}
+
+legend {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+label {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    position: relative;
+}
+
+button {
+    border: 3px solid #fff;
+    border-radius: 7px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 18px;
+    margin: 10px;
+    padding: 5px;
+}
+
+button:hover {
+    background-color: #fff;
+}
+
+hr {
+    margin: 0 20px;
+}
+
+.add-btn {
+    background-color: dodgerblue;
+}
+
+button:hover {
+    border: 3px solid dodgerblue;
+    color: dodgerblue;
+}
+
+.approve-btn {
+    background-color: green;
+}
+
+.approve-btn:hover {
+    border: 3px solid green;
+    color: green;
+}
+
+.del-btn {
+    background-color: red;
+}
+
+.del-btn:hover {
+    border: 3px solid red;
+    color: red;
+}
+
+.approved-feedback {
+    position:relative;
+    background-color: palegreen;
+}
+
+.approved-feedback:after {
+    content: "Одобрено";
+    position: absolute;
+    top: 5px;
+    right: 15px;
+    color: green;
+    font-weight: bolder;
+    text-transform: uppercase;
+    text-decoration: underline;
+}
